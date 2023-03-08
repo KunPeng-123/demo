@@ -1,0 +1,59 @@
+### 查询用户钱包余额
+GET localhost:8080/WalletOrOrder/queryWalletMoney/1
+
+### 创建消费100订单
+POST localhost:8080/WalletOrOrder/createOrder
+Content-Type: application/x-www-form-urlencoded
+
+userId=1&money=-100&details=消费100订单
+
+### 查询用户全部订单
+GET localhost:8080/WalletOrOrder/queryAllOrder/1
+
+### 完成消费100订单
+PUT localhost:8080/WalletOrOrder/completeOrder
+Content-Type: application/json
+
+{
+  "id": 2,
+  "userId": 1,
+  "money": -100,
+  "details": "消费100订单",
+  "createTime": "2023-02-17 07:05:19",
+  "modifyTime": "2023-02-17 07:05:19",
+  "success": false,
+  "refund": false
+}
+
+### 完成消费20订单
+PUT localhost:8080/WalletOrOrder/completeOrder
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "money": -20,
+  "details": "消费20订单",
+  "createTime": "2023-02-17 07:04:34",
+  "modifyTime": "2023-02-17 07:04:34",
+  "success": false,
+  "refund": false
+}
+
+### 退款消费20订单
+PUT localhost:8080/WalletOrOrder/refundOrder
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "money": -20,
+  "details": "消费20订单",
+  "createTime": "2023-02-17 07:04:34",
+  "modifyTime": "2023-02-17 07:04:34",
+  "success": true,
+  "refund": false
+}
+
+### 金额变动明细
+GET localhost:8080/WalletOrOrder/querySuccessOrder/1
